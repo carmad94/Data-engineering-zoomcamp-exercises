@@ -1,2 +1,8 @@
 week1/.ipynb_checkpoints
 week1/ny_taxi_postgres_data
+week1/*.csv
+week1/*.parquet
+week1/*.csv.gz
+*.json
+week1/terraform_gcp/.terraform/*
+week1/terraform_gcp/.terraform.lock.hcl
