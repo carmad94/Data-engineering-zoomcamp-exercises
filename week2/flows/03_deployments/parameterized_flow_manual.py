@@ -9,7 +9,15 @@ from datetime import timedelta
 @task(retries=3, cache_key_fn=task_input_hash, cache_expiration=timedelta(days=1))
 def fetch(dataset_url: str) -> pd.DataFrame:
     print(dataset_url)
-    df = pd.read_csv(dataset_url)
+    datetime_columns = ["tpep_pickup_datetime", "tpep_dropoff_datetime"]
+    if "green" in dataset_url:
+        datetime_columns = ["lpep_pickup_datetime", "lpep_dropoff_datetime"]
+    
+    df = pd.read_csv(
+        dataset_url,
+        parse_dates=datetime_columns,
+        infer_datetime_format=True
+    )
     print(df.head(2))
     return df
 
@@ -36,7 +44,9 @@ def write_local(df: pd.DataFrame, color: str, dataset_file: str) -> Path:
 @task
 def write_gcs(path: Path)->None:
     gcs_block = GcsBucket.load("zoom-gcs")
-    gcs_block.upload_from_path(from_path=path, to_path=path)
+    to_path = path.as_posix()
+    print(f"Uploading {to_path}")
+    gcs_block.upload_from_path(from_path=path, to_path=to_path)
     return
 
 
@@ -47,8 +57,8 @@ def etl_web_to_gcs(year: int, month: int, color:str) -> None:
     dataset_url = f"https://github.com/DataTalksClub/nyc-tlc-data/releases/download/{color}/{dataset_file}.csv.gz"
 
     df = fetch(dataset_url)
-    df_clean = clean(df)
-    path = write_local(df_clean, color, dataset_file)
+    # df_clean = clean(df)
+    path = write_local(df, color, dataset_file)
     write_gcs(path)
 
 
