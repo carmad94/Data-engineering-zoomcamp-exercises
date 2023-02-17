@@ -140,3 +140,8 @@ dmypy.json
 *.json
 week1/terraform_gcp/.terraform/*
 week1/terraform_gcp/.terraform.lock.hcl
+# Default .gitignore content added by dbt Cloud
+target/
+dbt_packages/
+logs/
+# end dbt Cloud content
