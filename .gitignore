@@ -136,7 +136,7 @@ dmypy.json
 
 # Big files
 *.parquet
-*.csv
+*.csv.gz
 *.json
 week1/terraform_gcp/.terraform/*
 week1/terraform_gcp/.terraform.lock.hcl
