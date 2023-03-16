@@ -1,0 +1,43 @@
+{
+  "namespace": "com.datatalksclub.taxi",
+  "type": "record",
+  "name": "GreenTaxiRide",
+  "fields": [
+    {
+      "name": "vendorId",
+      "type": "int"
+    },
+    {
+      "name": "pickup_datetime",
+      "type": "string"
+    },
+    {
+      "name": "dropoff_datetime",
+      "type": "string"
+    },
+    {
+      "name": "PULocationID",
+      "type": "int"
+    },
+    {
+      "name": "DOLocationID",
+      "type": "int"
+    },
+    {
+      "name": "passenger_count",
+      "type": "int"
+    },
+    {
+      "name": "trip_distance",
+      "type": "float"
+    },
+    {
+      "name": "payment_type",
+      "type": "int"
+    },
+    {
+      "name": "total_amount",
+      "type": "float"
+    }
+  ]
+}

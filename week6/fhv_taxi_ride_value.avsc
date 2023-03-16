@@ -1,0 +1,31 @@
+{
+  "namespace": "com.datatalksclub.taxi",
+  "type": "record",
+  "name": "FHVTaxiRide",
+  "fields": [
+    {
+      "name": "dispatching_base_num",
+      "type": "string"
+    },
+    {
+      "name": "pickup_datetime",
+      "type": "string"
+    },
+    {
+      "name": "dropoff_datetime",
+      "type": "string"
+    },
+    {
+      "name": "PULocationID",
+      "type": "int"
+    },
+    {
+      "name": "DOLocationID",
+      "type": "int"
+    },
+    {
+      "name": "affiliated_base_number",
+      "type": "string"
+    }
+  ]
+}

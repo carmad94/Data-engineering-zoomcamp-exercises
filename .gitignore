@@ -147,3 +147,4 @@ logs/
 # end dbt Cloud content
 
 *.crc
+*.txt
